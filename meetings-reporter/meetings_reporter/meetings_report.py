@@ -20,6 +20,7 @@ def report(file_path):
     check_path_exists(file_path)
     data = read_meetings(file_path)
     meetings_list = parse_meetings(data)
+    meetings_list = filter_working_hours(meetings_list)
     conflicts_list = generate_meetings_conflicts(meetings_list)
     __print_report__(conflicts_list)
 
@@ -47,6 +48,17 @@ def read_meetings(file_path):
     """
     logger.debug("Reading meetings data from file.")
     return pd.read_csv(file_path, header=0)
+
+
+def filter_working_hours(meetings_list):
+    filtered_meetings_list = []
+    print ("Working hours: ", meetings_list[0])
+    for i in meetings_list[1:]:
+        if meetings_list[0].contains(i):
+            filtered_meetings_list.append(i)
+        else:
+            logger.warning("    Meeting %s is outside of working hours. It will be excluded from planning.", i)
+    return filtered_meetings_list
 
 
 def parse_meetings(data):

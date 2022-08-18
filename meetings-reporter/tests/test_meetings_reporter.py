@@ -7,6 +7,7 @@ from meetings_reporter import parse_meetings
 from meetings_reporter import generate_meetings_conflicts
 
 
+# Common date inputs in datetime format
 t815 = datetime.strptime('8:15am', '%I:%M%p')
 t830 = datetime.strptime('8:30am', '%I:%M%p')
 t900 = datetime.strptime('9:00am', '%I:%M%p')
@@ -14,7 +15,7 @@ t1000 = datetime.strptime('10:00am', '%I:%M%p')
 
 
 def test_version():
-    assert __version__ == '0.1.0'
+    assert __version__ == '0.2.0'
 
 
 def test_parse_meetings():

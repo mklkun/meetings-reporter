@@ -35,3 +35,6 @@ class Meeting:
 
     def conflicts(self, other):
         return not (self.start >= other.end or self.end <= other.start)
+
+    def contains(self, other):
+        return self.start <= other.start and self.end >= other.end
