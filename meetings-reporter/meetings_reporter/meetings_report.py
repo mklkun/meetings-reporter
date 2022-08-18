@@ -85,4 +85,4 @@ def __print_report__(conflicts_list):
         print("Planning free from conflicts!")
     else:
         for i in range(len(conflicts_list)):
-            print("Meeting: ", conflicts_list[i][0], " conflicts Meeting: ", conflicts_list[i][1])
+            print(" Conflict", i+1, ": ", conflicts_list[i][0], " with ", conflicts_list[i][1])
