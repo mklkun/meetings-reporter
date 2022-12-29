@@ -44,4 +44,6 @@ jobs:
     - name: Publish to pypi.org
       working-directory: ${{ inputs.pyproject-folder }}
       shell: bash
-      run: poetry publish --no-interaction
+      run: |
+        cd meetings-reporter
+        poetry publish --no-interaction
