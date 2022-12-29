@@ -39,8 +39,9 @@ jobs:
         cd meetings-reporter
         poetry check
         poetry build
-    - name: Publish package
-      uses: pypa/gh-action-pypi-publish@27b31702a0e7fc50959f5ad993c78deac1bdfc29
-      with:
-        user: ${{ secrets.SECRET_PYPI_USERNAME }}
-        password: ${{ secrets.SECRET_PYPI_PASSWORD }}
+    - name: Setup poetry for publish
+      run: poetry config http-basic.pypi ${{ secrets.SECRET_PYPI_USERNAME }} ${{ secrets.SECRET_PYPI_PASSWORD }}
+    - name: Publish to pypi.org
+      working-directory: ${{ inputs.pyproject-folder }}
+      shell: bash
+      run: poetry publish --no-interaction
