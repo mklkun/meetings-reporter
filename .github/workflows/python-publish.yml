@@ -35,7 +35,9 @@ jobs:
         pip install --upgrade poetry
         pip install --upgrade pandas
     - name: Build package
-      run: poetry check
+      run: |
+        cd meetings-reporter
+        poetry check
     - name: Publish package
       uses: pypa/gh-action-pypi-publish@27b31702a0e7fc50959f5ad993c78deac1bdfc29
       with:
